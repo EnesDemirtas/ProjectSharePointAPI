@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Oz0kW3dQDBt8fGqyiYhixMYyVaLfETPJDgtR25lPSBYmipmvo+HLsCqqqxLMoiew+MCJYfLKwCCnNMUdAbfuJQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\90541\\source\\repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\90541\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
