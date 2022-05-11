@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PSP.Domain.Exceptions;
+using PSP.Domain.Validators.UserValidators;
 
 namespace PSP.Domain.Aggregates.UserAggregate {
 
@@ -30,7 +27,7 @@ namespace PSP.Domain.Aggregates.UserAggregate {
 
             if (validationResult.IsValid) return objToValidate;
 
-            var exception = new UserProfileNotValidException("The user profile is not valid");
+            var exception = new UserNotValidException("The user profile is not valid");
             foreach (var error in validationResult.Errors) {
                 exception.ValidationErrors.Add(error.ErrorMessage);
             }
