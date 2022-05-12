@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZZM4PNfhAU4mtv+7zlSwb7qyJnrhAPwjYHQ+bn5WvpR75NsX4FinwE8TAByvNdIkjS6Zxt/aGmImmQbTA9Nt4g==",
+  "dgSpecHash": "V496G/ANCRF50sl8WQD5eaBbXBuS5dwXzTH5vspPSxF9CLJh/16wb5lj8B36ubLA1TJvTblctoJ3qiK6c4z4VQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\90541\\source\\repos\\ProjectSharePointAPI\\PSP.Api\\PSP.Api.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,8 @@
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.5\\microsoft.aspnetcore.cryptography.internal.6.0.5.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.5\\microsoft.aspnetcore.cryptography.keyderivation.6.0.5.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.5\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.5.nupkg.sha512",
+    "C:\\Users\\90541\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
+    "C:\\Users\\90541\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning.apiexplorer\\5.0.0\\microsoft.aspnetcore.mvc.versioning.apiexplorer.5.0.0.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",

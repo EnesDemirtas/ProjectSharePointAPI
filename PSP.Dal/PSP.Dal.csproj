@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PSP.Domain\PSP.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
