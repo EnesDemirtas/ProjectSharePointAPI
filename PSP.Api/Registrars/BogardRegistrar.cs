@@ -1,4 +1,6 @@
-﻿namespace PSP.Api.Registrars {
+﻿using PSP.Application.Users.Queries;
+
+namespace PSP.Api.Registrars {
 
     public class BogardRegistrar : IWebApplicationBuilderRegistrar {
 
