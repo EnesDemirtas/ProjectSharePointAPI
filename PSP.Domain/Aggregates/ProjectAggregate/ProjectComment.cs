@@ -11,7 +11,7 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
         public Guid CommentId { get; private set; }
         public Guid ProjectId { get; private set; }
         public string Text { get; private set; }
-        public Guid UserId { get; private set; }
+        public Guid UserProfileId { get; private set; }
 
         // Factories
 
@@ -21,7 +21,7 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
             var objectToValidate = new ProjectComment {
                 ProjectId = projectId,
                 Text = text,
-                UserId = userId
+                UserProfileId = userId
             };
 
             var validationResult = validator.Validate(objectToValidate);

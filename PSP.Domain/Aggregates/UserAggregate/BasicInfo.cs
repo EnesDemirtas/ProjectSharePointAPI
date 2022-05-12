@@ -27,7 +27,7 @@ namespace PSP.Domain.Aggregates.UserAggregate {
 
             if (validationResult.IsValid) return objToValidate;
 
-            var exception = new UserNotValidException("The user profile is not valid");
+            var exception = new UserProfileNotValidException("The user profile is not valid");
             foreach (var error in validationResult.Errors) {
                 exception.ValidationErrors.Add(error.ErrorMessage);
             }

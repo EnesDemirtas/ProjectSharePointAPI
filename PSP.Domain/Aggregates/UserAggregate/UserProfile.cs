@@ -1,17 +1,17 @@
 ﻿namespace PSP.Domain.Aggregates.UserAggregate {
 
-    public class User {
+    public class UserProfile {
 
-        private User() {
+        private UserProfile() {
         }
 
-        public Guid UserId { get; private set; }
+        public Guid UserProfileId { get; private set; }
         public string IdentityId { get; private set; }
         public BasicInfo BasicInfo { get; private set; }
 
         // Factory Method
-        public static User CreateUser(string identityId, BasicInfo basicInfo) {
-            return new User {
+        public static UserProfile CreateUser(string identityId, BasicInfo basicInfo) {
+            return new UserProfile {
                 IdentityId = identityId,
                 BasicInfo = basicInfo
             };

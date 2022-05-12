@@ -12,8 +12,8 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
         }
 
         public Guid ProjectId { get; private set; }
-        public Guid UserId { get; private set; }
-        public User User { get; private set; }
+        public Guid UserProfileId { get; private set; }
+        public UserProfile UserProfile { get; private set; }
         public string ProjectContent { get; private set; }
         public IEnumerable<ProjectComment> Comments { get { return _comments; } }
         public IEnumerable<ProjectInteraction> Interactions { get { return _interactions; } }
@@ -24,7 +24,7 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
             var validator = new ProjectValidator();
 
             var objectToValidate = new Project {
-                UserId = userId,
+                UserProfileId = userId,
                 ProjectContent = projectContent,
             };
 
