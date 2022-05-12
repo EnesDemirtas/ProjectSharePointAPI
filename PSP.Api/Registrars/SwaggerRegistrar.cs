@@ -1,6 +1,4 @@
-﻿using PSP.Api.Options;
-
-namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars {
 
     public class SwaggerRegistrar : IWebApplicationBuilderRegistrar {
 

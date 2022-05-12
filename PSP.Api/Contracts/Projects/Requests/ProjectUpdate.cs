@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PSP.Api.Contracts.Projects.Requests {
+﻿namespace PSP.Api.Contracts.Projects.Requests {
 
     public class ProjectUpdate {
 

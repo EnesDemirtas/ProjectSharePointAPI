@@ -1,7 +1,4 @@
-﻿using PSP.Api.Contracts.UserProfile.Responses;
-using System.ComponentModel.DataAnnotations;
-
-namespace PSP.Api.Contracts.Projects.Requests {
+﻿namespace PSP.Api.Contracts.Projects.Requests {
 
     public class ProjectCommentCreate {
 

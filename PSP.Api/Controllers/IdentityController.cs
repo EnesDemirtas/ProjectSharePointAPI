@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using PSP.Api.Contracts.Identity;
-using PSP.Api.Filters;
-using PSP.Application.Identity.Commands;
-
-namespace PSP.Api.Controllers {
+﻿namespace PSP.Api.Controllers {
 
     [Route(ApiRoutes.BaseRoute)]
     [ApiController]

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-
-namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars {
 
     public class MvcWebAppRegistrar : IWebApplicationRegistrar {
 

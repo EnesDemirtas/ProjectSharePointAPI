@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PSP.Api.Contracts.Common;
-using PSP.Application.Enums;
-using PSP.Application.Models;
-
-namespace PSP.Api.Controllers {
+﻿namespace PSP.Api.Controllers {
 
     public class BaseController : ControllerBase {
 

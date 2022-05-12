@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
-namespace PSP.Api.Options {
+﻿namespace PSP.Api.Options {
 
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions> {
         private readonly IApiVersionDescriptionProvider _provider;

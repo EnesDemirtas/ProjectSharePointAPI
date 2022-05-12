@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PSP.Api.Contracts.Identity {
+﻿namespace PSP.Api.Contracts.Identity {
 
     public class Login {
 

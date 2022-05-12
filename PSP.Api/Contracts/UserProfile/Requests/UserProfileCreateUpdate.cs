@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PSP.Api.Contracts.UserProfile.Requests {
+﻿namespace PSP.Api.Contracts.UserProfile.Requests {
     public record UserProfileCreateUpdate {
         [Required]
         [MinLength(3)]

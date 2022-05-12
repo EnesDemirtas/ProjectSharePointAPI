@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using PSP.Api.Contracts.UserProfile.Requests;
-using PSP.Api.Contracts.UserProfile.Responses;
-using PSP.Application.Users.Commands;
-using PSP.Domain.Aggregates.UserAggregate;
-
-namespace PSP.Api.MappingProfiles {
+﻿namespace PSP.Api.MappingProfiles {
 
     public class UserProfileMappings : Profile {
 

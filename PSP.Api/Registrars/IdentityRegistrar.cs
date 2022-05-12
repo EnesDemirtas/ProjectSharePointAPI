@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using PSP.Application.Options;
-using System.Text;
-
-namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars {
 
     public class IdentityRegistrar : IWebApplicationBuilderRegistrar {
 

@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using PSP.Api.Filters;
-
-namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars {
 
     public class MvcRegistrar : IWebApplicationBuilderRegistrar {
 
