@@ -28,9 +28,7 @@ namespace PSP.Application.Users.CommandHandlers {
                 var userProfile = await _ctx.UserProfiles.FirstOrDefaultAsync(up => up.UserProfileId == request.UserProfileId);
 
                 if (userProfile is null) {
-                    result.IsError = true;
-                    var error = new Error { Code = ErrorCode.NotFound, Message = $"No UserProfile found with ID {request.UserProfileId}" };
-                    result.Errors.Add(error);
+                    result.AddError(ErrorCode.NotFound, string.Format(UserProfileErrorMessages.UserProfileNotFound, request.UserProfileId));
                     return result;
                 }
 
@@ -44,20 +42,14 @@ namespace PSP.Application.Users.CommandHandlers {
                 result.Payload = userProfile;
                 return result;
             } catch (UserProfileNotValidException ex) {
-                result.IsError = true;
                 ex.ValidationErrors.ForEach(e => {
-                    var error = new Error {
-                        Code = ErrorCode.ValidationError,
-                        Message = $"{ex.Message}"
-                    };
-                    result.Errors.Add(error);
+                    result.AddError(ErrorCode.ValidationError, e);
                 });
 
                 return result;
             } catch (Exception e) {
-                var error = new Error { Code = ErrorCode.ServerError, Message = e.Message };
-                result.IsError = true;
-                result.Errors.Add(error);
+                result.AddUnknownError(e.Message);
+
             }
 
             return result;
