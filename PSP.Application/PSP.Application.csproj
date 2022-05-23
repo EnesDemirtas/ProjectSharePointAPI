@@ -16,8 +16,4 @@
     <ProjectReference Include="..\PSP.Dal\PSP.Dal.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Identity\MappingProfiles" />
-  </ItemGroup>
-
 </Project>
