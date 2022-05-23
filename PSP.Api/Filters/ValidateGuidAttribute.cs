@@ -1,18 +1,34 @@
-﻿namespace PSP.Api.Filters {
+﻿public class ValidateGuidAttribute : ActionFilterAttribute {
+    private readonly List<string> _keys;
 
-    public class ValidateGuidAttribute : ActionFilterAttribute {
-        private readonly string _key;
+    public ValidateGuidAttribute(string key) {
+        _keys = new List<string>();
+        _keys.Add(key);
+    }
 
-        public ValidateGuidAttribute(string key) {
-            _key = key;
-        }
+    public ValidateGuidAttribute(string key1, string key2) {
+        _keys = new List<string>();
+        _keys.Add(key1);
+        _keys.Add(key2);
+    }
 
-        public override void OnActionExecuting(ActionExecutingContext context) {
-            if (!context.ActionArguments.TryGetValue(_key, out var value)) return;
-            if (Guid.TryParse(value?.ToString(), out var guid)) return;
-            var apiError = new ErrorResponse { StatusCode = 400, StatusPhrase = "Bad Request", Timestamp = DateTime.Now };
-            apiError.Errors.Add($"The identifier for {_key} is not a correct GUID format");
+    public override void OnActionExecuting(ActionExecutingContext context) {
+        bool hasError = false;
+        var apiError = new ErrorResponse();
+        _keys.ForEach(k => {
+            if (!context.ActionArguments.TryGetValue(k, out var value)) return;
+            if (!Guid.TryParse(value?.ToString(), out var guid)) {
+                hasError = true;
+                apiError.Errors.Add($"The identifier for {k} is not a correct GUID format");
+            }
+        });
+        if (hasError) {
+            apiError.StatusCode = 400;
+            apiError.StatusPhrase = "Bad request";
+            apiError.Timestamp = DateTime.Now;
             context.Result = new ObjectResult(apiError);
         }
+
+        return;
     }
 }
