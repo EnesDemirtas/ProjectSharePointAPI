@@ -27,9 +27,12 @@ namespace PSP.Application.Projects.CommandHandlers {
                 var project = await _ctx.Projects.FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
                 if (project is null) {
-                    result.IsError = true;
-                    var error = new Error { Code = ErrorCode.NotFound, Message = $"No Project found with ID {request.ProjectId}" };
-                    result.Errors.Add(error);
+                    result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
+                    return result;
+                }
+                
+                if (project.UserProfileId != request.UserProfileId) {
+                    result.AddError(ErrorCode.PostDeleteNotPossible, ProjectErrorMessages.PostDeleteNotPossible);
                     return result;
                 }
 
@@ -37,12 +40,8 @@ namespace PSP.Application.Projects.CommandHandlers {
                 await _ctx.SaveChangesAsync();
                 result.Payload = project;
             } catch (Exception e) {
-                var error = new Error {
-                    Code = ErrorCode.UnknownError,
-                    Message = $"{e.Message}"
-                };
-                result.IsError = true;
-                result.Errors.Add(error);
+                result.AddUnknownError(e.Message);
+
             }
 
             return result;

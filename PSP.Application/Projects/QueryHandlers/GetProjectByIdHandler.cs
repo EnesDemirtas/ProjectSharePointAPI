@@ -25,9 +25,7 @@ namespace PSP.Application.Projects.QueryHandlers {
             var post = await _ctx.Projects.FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
             if (post is null) {
-                result.IsError = true;
-                var error = new Error { Code = ErrorCode.NotFound, Message = $"No Post found with ID {request.ProjectId}" };
-                result.Errors.Add(error);
+                result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
                 return result;
             }
 
