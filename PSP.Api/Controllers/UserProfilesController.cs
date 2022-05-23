@@ -18,16 +18,7 @@
             var profiles = _mapper.Map<List<UserProfileResponse>>(response.Payload);
             return Ok(profiles);
         }
-
-        [HttpPost]
-        [ValidateModel]
-        public async Task<IActionResult> CreateUserProfile([FromBody] UserProfileCreateUpdate profile) {
-            var command = _mapper.Map<CreateUserProfileCommand>(profile);
-            var response = await _mediator.Send(command);
-            var userProfile = _mapper.Map<UserProfileResponse>(response.Payload);
-
-            return CreatedAtAction(nameof(GetUserProfileById), new { id = userProfile.UserProfileId }, userProfile);
-        }
+        
 
         [Route(ApiRoutes.UserProfiles.IdRoute)]
         [HttpGet]
@@ -52,15 +43,6 @@
             var response = await _mediator.Send(command);
             return response.IsError ? HandleErrorResponse(response.Errors) : NoContent();
         }
-
-        [HttpDelete]
-        [Route(ApiRoutes.UserProfiles.IdRoute)]
-        [ValidateGuid("id")]
-        public async Task<IActionResult> DeleteUserProfile(string id) {
-            var command = new DeleteUserProfileCommand() { UserProfileId = Guid.Parse(id) };
-            var response = await _mediator.Send(command);
-
-            return response.IsError ? HandleErrorResponse(response.Errors) : NoContent();
-        }
+        
     }
 }

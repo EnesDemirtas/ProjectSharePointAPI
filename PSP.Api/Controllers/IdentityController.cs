@@ -1,4 +1,7 @@
-﻿namespace PSP.Api.Controllers {
+﻿using Microsoft.AspNetCore.Authorization;
+using PSP.Api.Extensions;
+
+namespace PSP.Api.Controllers {
 
     [Route(ApiRoutes.BaseRoute)]
     [ApiController]
@@ -19,10 +22,38 @@
             var result = await _mediator.Send(command);
 
             if (result.IsError) return HandleErrorResponse(result.Errors);
+            
+            return Ok(_mapper.Map<IdentityUserProfile>(result.Payload));
 
-            var authenticationResult = new AuthenticationResult { Token = result.Payload };
+        }
+        
+        [HttpPost]
+        [Route(ApiRoutes.Identity.Login)]
+        [ValidateModel]
+        public async Task<IActionResult> Login(Login login) {
+            var command = _mapper.Map<LoginCommand>(login);
+            var result = await _mediator.Send(command);
+            if (result.IsError) return HandleErrorResponse(result.Errors);
 
-            return Ok(authenticationResult);
+            return Ok(_mapper.Map<IdentityUserProfile>(result.Payload));
+
+        }
+        
+        [HttpDelete]
+        [Route(ApiRoutes.Identity.IdentityById)]
+        [ValidateGuid("identityUserId")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> DeleteAccount(string identityUserId, CancellationToken token) {
+            var identityUserGuid = Guid.Parse(identityUserId);
+            var requestorGuid = HttpContext.GetIdentityIdClaimValue();
+            var command = new RemoveAccount {
+                IdentityUserId = identityUserGuid,
+                RequestorGuid = requestorGuid
+            };
+            var result = await _mediator.Send(command, token);
+            if (result.IsError) return HandleErrorResponse(result.Errors);
+
+            return NoContent();
         }
     }
 }
