@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public interface IWebApplicationRegistrar : IRegistrar {
+    public interface IWebApplicationRegistrar : IRegistrar
+    {
 
         public void RegisterPipelineComponents(WebApplication app);
     }

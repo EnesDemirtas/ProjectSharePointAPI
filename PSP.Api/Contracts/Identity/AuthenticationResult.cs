@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Contracts.Identity {
+﻿namespace PSP.Api.Contracts.Identity
+{
 
-    public class AuthenticationResult {
+    public class AuthenticationResult
+    {
         public string Token { get; set; }
     }
 }

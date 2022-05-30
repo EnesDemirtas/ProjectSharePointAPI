@@ -8,22 +8,28 @@ using PSP.Domain.Aggregates.ProjectAggregate;
 using PSP.Domain.Exceptions;
 
 
-namespace PSP.Application.Projects.CommandHandlers {
+namespace PSP.Application.Projects.CommandHandlers
+{
 
-    public class AddProjectCommentHandler : IRequestHandler<AddProjectComment, OperationResult<ProjectComment>> {
+    public class AddProjectCommentHandler : IRequestHandler<AddProjectComment, OperationResult<ProjectComment>>
+    {
         private readonly DataContext _ctx;
 
-        public AddProjectCommentHandler(DataContext ctx) {
+        public AddProjectCommentHandler(DataContext ctx)
+        {
             _ctx = ctx;
         }
 
-        public async Task<OperationResult<ProjectComment>> Handle(AddProjectComment request, CancellationToken cancellationToken) {
+        public async Task<OperationResult<ProjectComment>> Handle(AddProjectComment request, CancellationToken cancellationToken)
+        {
             var result = new OperationResult<ProjectComment>();
 
-            try {
+            try
+            {
                 var post = await _ctx.Projects.FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
-                if (post is null) {
+                if (post is null)
+                {
                     result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
                     return result;
                 }
@@ -35,11 +41,16 @@ namespace PSP.Application.Projects.CommandHandlers {
                 _ctx.Projects.Update(post);
                 await _ctx.SaveChangesAsync();
                 result.Payload = comment;
-            } catch (ProjectCommentNotValidException ex) {
-                ex.ValidationErrors.ForEach(e => {
+            }
+            catch (ProjectCommentNotValidException ex)
+            {
+                ex.ValidationErrors.ForEach(e =>
+                {
                     result.AddError(ErrorCode.ValidationError, e);
                 });
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 result.AddUnknownError(e.Message);
 
             }

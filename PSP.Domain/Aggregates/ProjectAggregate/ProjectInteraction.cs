@@ -1,10 +1,13 @@
 ﻿using PSP.Domain.Aggregates.UserAggregate;
 
-namespace PSP.Domain.Aggregates.ProjectAggregate {
+namespace PSP.Domain.Aggregates.ProjectAggregate
+{
 
-    public class ProjectInteraction {
+    public class ProjectInteraction
+    {
 
-        private ProjectInteraction() {
+        private ProjectInteraction()
+        {
         }
 
         public Guid InteractionId { get; private set; }
@@ -16,8 +19,10 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
 
         // Factories
 
-        public static ProjectInteraction CreateProjectInteraction(Guid projectId, Guid userProfileId, InteractionType type) {
-            return new ProjectInteraction {
+        public static ProjectInteraction CreateProjectInteraction(Guid projectId, Guid userProfileId, InteractionType type)
+        {
+            return new ProjectInteraction
+            {
                 ProjectId = projectId,
                 UserProfileId = userProfileId,
                 InteractionType = type

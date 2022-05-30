@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0IJBvAK+KKzLlU4LbR/O/VkJt3koc+lk1xuqTMqd+ECn6AEFXZAdlnPTNyelgoUi3BpXbLeQuyT6/5q+rLDs7Q==",
+  "dgSpecHash": "xOmS7bpHkxnXnxooOJWHx2VsqzeaIqIcWruz702IsHNf7+2mI3RMrVrqqLGn0nGe0c7oQi7dSQK1WFNwCLqNeg==",
   "success": true,
-  "projectFilePath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
+  "projectFilePath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
   "expectedPackageFiles": [
     "/home/rota/.nuget/packages/automapper/11.0.1/automapper.11.0.1.nupkg.sha512",
     "/home/rota/.nuget/packages/fluentvalidation/11.0.1/fluentvalidation.11.0.1.nupkg.sha512",

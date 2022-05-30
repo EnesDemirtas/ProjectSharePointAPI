@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {}
+    "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {}
   },
   "projects": {
-    "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {
+    "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
+        "projectUniqueName": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
         "projectName": "PSP.Domain",
-        "projectPath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
+        "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
         "packagesPath": "/home/rota/.nuget/packages/",
-        "outputPath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Domain/obj/",
+        "outputPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rota/.nuget/NuGet/NuGet.Config"

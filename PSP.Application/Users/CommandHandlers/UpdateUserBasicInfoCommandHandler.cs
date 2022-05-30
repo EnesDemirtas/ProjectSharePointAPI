@@ -6,28 +6,29 @@ using PSP.Application.Users.Commands;
 using PSP.Dal;
 using PSP.Domain.Aggregates.UserAggregate;
 using PSP.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PSP.Application.Users.CommandHandlers {
+namespace PSP.Application.Users.CommandHandlers
+{
 
-    internal class UpdateUserBasicInfoHandler : IRequestHandler<UpdateUserBasicInfoCommand, OperationResult<UserProfile>> {
+    internal class UpdateUserBasicInfoHandler : IRequestHandler<UpdateUserBasicInfoCommand, OperationResult<UserProfile>>
+    {
         private readonly DataContext _ctx;
 
-        public UpdateUserBasicInfoHandler(DataContext ctx) {
+        public UpdateUserBasicInfoHandler(DataContext ctx)
+        {
             _ctx = ctx;
         }
 
-        public async Task<OperationResult<UserProfile>> Handle(UpdateUserBasicInfoCommand request, CancellationToken cancellationToken) {
+        public async Task<OperationResult<UserProfile>> Handle(UpdateUserBasicInfoCommand request, CancellationToken cancellationToken)
+        {
             var result = new OperationResult<UserProfile>();
 
-            try {
+            try
+            {
                 var userProfile = await _ctx.UserProfiles.FirstOrDefaultAsync(up => up.UserProfileId == request.UserProfileId);
 
-                if (userProfile is null) {
+                if (userProfile is null)
+                {
                     result.AddError(ErrorCode.NotFound, string.Format(UserProfileErrorMessages.UserProfileNotFound, request.UserProfileId));
                     return result;
                 }
@@ -41,13 +42,18 @@ namespace PSP.Application.Users.CommandHandlers {
 
                 result.Payload = userProfile;
                 return result;
-            } catch (UserProfileNotValidException ex) {
-                ex.ValidationErrors.ForEach(e => {
+            }
+            catch (UserProfileNotValidException ex)
+            {
+                ex.ValidationErrors.ForEach(e =>
+                {
                     result.AddError(ErrorCode.ValidationError, e);
                 });
 
                 return result;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 result.AddUnknownError(e.Message);
 
             }

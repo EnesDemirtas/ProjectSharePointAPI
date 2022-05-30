@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Contracts.Projects.Requests {
+﻿namespace PSP.Api.Contracts.Projects.Requests
+{
 
-    public class ProjectUpdate {
+    public class ProjectUpdate
+    {
 
         [Required]
         public string Text { get; set; }

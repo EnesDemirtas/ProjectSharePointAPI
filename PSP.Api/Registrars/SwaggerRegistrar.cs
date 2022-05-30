@@ -1,8 +1,11 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public class SwaggerRegistrar : IWebApplicationBuilderRegistrar {
+    public class SwaggerRegistrar : IWebApplicationBuilderRegistrar
+    {
 
-        public void RegisterServices(WebApplicationBuilder builder) {
+        public void RegisterServices(WebApplicationBuilder builder)
+        {
             builder.Services.AddSwaggerGen();
             builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
         }

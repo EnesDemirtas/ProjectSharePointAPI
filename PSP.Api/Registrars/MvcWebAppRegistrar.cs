@@ -1,23 +1,31 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public class MvcWebAppRegistrar : IWebApplicationRegistrar {
+    public class MvcWebAppRegistrar : IWebApplicationRegistrar
+    {
 
-        public void RegisterPipelineComponents(WebApplication app) {
+        public void RegisterPipelineComponents(WebApplication app)
+        {
             app.UseSwagger();
-            app.UseSwaggerUI(options => {
+            app.UseSwaggerUI(options =>
+            {
                 var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
-                foreach (var description in provider.ApiVersionDescriptions) {
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
                     options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
                         description.ApiVersion.ToString());
                 }
             });
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = "";
             });
 
             app.UseHttpsRedirection();
+
+            app.UseCors(cors => cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthorization();
 

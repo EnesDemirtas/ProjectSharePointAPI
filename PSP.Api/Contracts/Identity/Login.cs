@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Contracts.Identity {
+﻿namespace PSP.Api.Contracts.Identity
+{
 
-    public class Login {
+    public class Login
+    {
 
         [EmailAddress]
         [Required]

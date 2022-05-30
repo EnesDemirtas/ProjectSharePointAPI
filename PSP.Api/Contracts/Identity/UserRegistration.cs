@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Contracts.Identity {
+﻿namespace PSP.Api.Contracts.Identity
+{
 
-    public class UserRegistration {
+    public class UserRegistration
+    {
 
         [Required]
         [MinLength(3)]

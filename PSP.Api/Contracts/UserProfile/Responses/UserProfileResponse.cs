@@ -1,5 +1,7 @@
-﻿namespace PSP.Api.Contracts.UserProfile.Responses {
-    public record UserProfileResponse {
+﻿namespace PSP.Api.Contracts.UserProfile.Responses
+{
+    public record UserProfileResponse
+    {
         public Guid UserProfileId { get; set; }
         public BasicInformation BasicInfo { get; set; }
         public DateTime DateCreated { get; set; }

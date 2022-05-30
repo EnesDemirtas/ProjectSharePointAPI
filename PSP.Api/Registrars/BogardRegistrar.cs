@@ -1,8 +1,11 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public class BogardRegistrar : IWebApplicationBuilderRegistrar {
+    public class BogardRegistrar : IWebApplicationBuilderRegistrar
+    {
 
-        public void RegisterServices(WebApplicationBuilder builder) {
+        public void RegisterServices(WebApplicationBuilder builder)
+        {
             builder.Services.AddAutoMapper(typeof(Program), typeof(GetAllUserProfiles));
             builder.Services.AddMediatR(typeof(GetAllUserProfiles));
         }

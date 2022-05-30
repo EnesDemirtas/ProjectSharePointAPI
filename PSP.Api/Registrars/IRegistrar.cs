@@ -1,5 +1,7 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public interface IRegistrar {
+    public interface IRegistrar
+    {
     }
 }

@@ -1,14 +1,19 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public class DbRegistrar : IWebApplicationBuilderRegistrar {
+    public class DbRegistrar : IWebApplicationBuilderRegistrar
+    {
 
-        public void RegisterServices(WebApplicationBuilder builder) {
+        public void RegisterServices(WebApplicationBuilder builder)
+        {
             var cs = builder.Configuration.GetConnectionString("Default");
-            builder.Services.AddDbContext<DataContext>(options => {
+            builder.Services.AddDbContext<DataContext>(options =>
+            {
                 options.UseSqlServer(cs);
             });
 
-            builder.Services.AddIdentityCore<IdentityUser>(options => {
+            builder.Services.AddIdentityCore<IdentityUser>(options =>
+            {
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 5;
                 options.Password.RequireLowercase = false;

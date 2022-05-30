@@ -6,33 +6,40 @@ using PSP.Application.Projects.Commands;
 using PSP.Dal;
 using PSP.Domain.Aggregates.ProjectAggregate;
 
-namespace PSP.Application.Projects.CommandHandlers; 
+namespace PSP.Application.Projects.CommandHandlers;
 
-public class RemoveProjectInteractionHandler : IRequestHandler<RemoveProjectInteraction, OperationResult<ProjectInteraction>> {
+public class RemoveProjectInteractionHandler : IRequestHandler<RemoveProjectInteraction, OperationResult<ProjectInteraction>>
+{
     private readonly DataContext _ctx;
 
-    public RemoveProjectInteractionHandler(DataContext ctx) {
+    public RemoveProjectInteractionHandler(DataContext ctx)
+    {
         _ctx = ctx;
     }
 
-    public async Task<OperationResult<ProjectInteraction>> Handle(RemoveProjectInteraction request, CancellationToken cancellationToken) {
+    public async Task<OperationResult<ProjectInteraction>> Handle(RemoveProjectInteraction request, CancellationToken cancellationToken)
+    {
         var result = new OperationResult<ProjectInteraction>();
-        try {
+        try
+        {
             var post = await _ctx.Projects.Include(p => p.Interactions)
                 .FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
-            if (post is null) {
+            if (post is null)
+            {
                 result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
                 return result;
             }
 
             var interaction = post.Interactions.FirstOrDefault(i => i.InteractionId == request.InteractionId);
-            if (interaction is null) {
+            if (interaction is null)
+            {
                 result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostInteractionNotFound);
                 return result;
             }
 
-            if (interaction.UserProfileId != request.UserProfileId) {
+            if (interaction.UserProfileId != request.UserProfileId)
+            {
                 result.AddError(ErrorCode.InteractionRemovalNotAuthorized, ProjectErrorMessages.InteractionRemovalNotAuthorized);
                 return result;
             }
@@ -42,7 +49,9 @@ public class RemoveProjectInteractionHandler : IRequestHandler<RemoveProjectInte
             await _ctx.SaveChangesAsync(cancellationToken);
 
             result.Payload = interaction;
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             result.AddUnknownError(e.Message);
         }
 

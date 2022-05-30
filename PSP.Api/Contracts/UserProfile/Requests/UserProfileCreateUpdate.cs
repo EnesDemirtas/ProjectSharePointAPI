@@ -1,5 +1,7 @@
-﻿namespace PSP.Api.Contracts.UserProfile.Requests {
-    public record UserProfileCreateUpdate {
+﻿namespace PSP.Api.Contracts.UserProfile.Requests
+{
+    public record UserProfileCreateUpdate
+    {
         [Required]
         [MinLength(3)]
         [MaxLength(50)]

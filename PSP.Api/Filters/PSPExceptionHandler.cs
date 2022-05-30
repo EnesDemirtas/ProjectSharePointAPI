@@ -1,8 +1,11 @@
-﻿namespace PSP.Api.Filters {
+﻿namespace PSP.Api.Filters
+{
 
-    public class PSPExceptionHandler : ExceptionFilterAttribute {
+    public class PSPExceptionHandler : ExceptionFilterAttribute
+    {
 
-        public override void OnException(ExceptionContext context) {
+        public override void OnException(ExceptionContext context)
+        {
             var apiError = new ErrorResponse();
             apiError.StatusCode = 500;
             apiError.StatusPhrase = "Internal Server Error";

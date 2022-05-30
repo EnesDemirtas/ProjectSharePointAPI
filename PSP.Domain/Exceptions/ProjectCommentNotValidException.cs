@@ -1,14 +1,19 @@
-﻿namespace PSP.Domain.Exceptions {
+﻿namespace PSP.Domain.Exceptions
+{
 
-    public class ProjectCommentNotValidException : NotValidException {
+    public class ProjectCommentNotValidException : NotValidException
+    {
 
-        internal ProjectCommentNotValidException() {
+        internal ProjectCommentNotValidException()
+        {
         }
 
-        internal ProjectCommentNotValidException(string message) : base(message) {
+        internal ProjectCommentNotValidException(string message) : base(message)
+        {
         }
 
-        internal ProjectCommentNotValidException(string message, Exception inner) : base(message, inner) {
+        internal ProjectCommentNotValidException(string message, Exception inner) : base(message, inner)
+        {
         }
     }
 }

@@ -1,11 +1,14 @@
 ﻿using PSP.Domain.Exceptions;
 using PSP.Domain.Validators.UserValidators;
 
-namespace PSP.Domain.Aggregates.UserAggregate {
+namespace PSP.Domain.Aggregates.UserAggregate
+{
 
-    public class BasicInfo {
+    public class BasicInfo
+    {
 
-        private BasicInfo() {
+        private BasicInfo()
+        {
         }
 
         public string FirstName { get; private set; }
@@ -13,10 +16,12 @@ namespace PSP.Domain.Aggregates.UserAggregate {
         public string UserName { get; private set; }
         public string EmailAddress { get; private set; }
 
-        public static BasicInfo CreateBasicInfo(string firstName, string lastName, string userName, string email) {
+        public static BasicInfo CreateBasicInfo(string firstName, string lastName, string userName, string email)
+        {
             var validator = new BasicInfoValidator();
 
-            var objToValidate = new BasicInfo {
+            var objToValidate = new BasicInfo
+            {
                 FirstName = firstName,
                 LastName = lastName,
                 UserName = userName,
@@ -28,7 +33,8 @@ namespace PSP.Domain.Aggregates.UserAggregate {
             if (validationResult.IsValid) return objToValidate;
 
             var exception = new UserProfileNotValidException("The user profile is not valid");
-            foreach (var error in validationResult.Errors) {
+            foreach (var error in validationResult.Errors)
+            {
                 exception.ValidationErrors.Add(error.ErrorMessage);
             }
 

@@ -1,11 +1,14 @@
 ﻿using FluentValidation;
 using PSP.Domain.Aggregates.UserAggregate;
 
-namespace PSP.Domain.Validators.UserValidators {
+namespace PSP.Domain.Validators.UserValidators
+{
 
-    public class BasicInfoValidator : AbstractValidator<BasicInfo> {
+    public class BasicInfoValidator : AbstractValidator<BasicInfo>
+    {
 
-        public BasicInfoValidator() {
+        public BasicInfoValidator()
+        {
             RuleFor(info => info.FirstName)
                 .NotNull().WithMessage("First name is required. It is currently null")
                 .MinimumLength(3).WithMessage("First name must be at least 3 characters long.")

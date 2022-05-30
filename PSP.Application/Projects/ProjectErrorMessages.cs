@@ -1,6 +1,7 @@
-namespace PSP.Application.Projects; 
+namespace PSP.Application.Projects;
 
-public class ProjectErrorMessages {
+public class ProjectErrorMessages
+{
     public const string PostNotFound = "No post found with ID {0}";
     public const string PostDeleteNotPossible = "Only the owner of a post can delete it";
     public const string PostUpdateNotPossible = "Post update not possible because it's not the post owner that initiates the update";

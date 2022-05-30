@@ -1,11 +1,15 @@
-﻿namespace PSP.Api.Controllers {
+﻿namespace PSP.Api.Controllers
+{
 
-    public class BaseController : ControllerBase {
+    public class BaseController : ControllerBase
+    {
 
-        protected IActionResult HandleErrorResponse(List<Error> errors) {
+        protected IActionResult HandleErrorResponse(List<Error> errors)
+        {
             var apiError = new ErrorResponse();
 
-            if (errors.Any(e => e.Code == ErrorCode.NotFound)) {
+            if (errors.Any(e => e.Code == ErrorCode.NotFound))
+            {
                 var error = errors.First(e => e.Code == ErrorCode.NotFound);
                 apiError.StatusCode = 404;
                 apiError.StatusPhrase = "Not Found";

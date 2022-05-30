@@ -5,33 +5,35 @@ using PSP.Application.Models;
 using PSP.Application.Projects.Commands;
 using PSP.Dal;
 using PSP.Domain.Aggregates.ProjectAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PSP.Application.Projects.CommandHandlers {
+namespace PSP.Application.Projects.CommandHandlers
+{
 
-    public class DeleteProjectHandler : IRequestHandler<DeleteProject, OperationResult<Project>> {
+    public class DeleteProjectHandler : IRequestHandler<DeleteProject, OperationResult<Project>>
+    {
         private readonly DataContext _ctx;
 
-        public DeleteProjectHandler(DataContext ctx) {
+        public DeleteProjectHandler(DataContext ctx)
+        {
             _ctx = ctx;
         }
 
-        public async Task<OperationResult<Project>> Handle(DeleteProject request, CancellationToken cancellationToken) {
+        public async Task<OperationResult<Project>> Handle(DeleteProject request, CancellationToken cancellationToken)
+        {
             var result = new OperationResult<Project>();
 
-            try {
+            try
+            {
                 var project = await _ctx.Projects.FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
-                if (project is null) {
+                if (project is null)
+                {
                     result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
                     return result;
                 }
-                
-                if (project.UserProfileId != request.UserProfileId) {
+
+                if (project.UserProfileId != request.UserProfileId)
+                {
                     result.AddError(ErrorCode.PostDeleteNotPossible, ProjectErrorMessages.PostDeleteNotPossible);
                     return result;
                 }
@@ -39,7 +41,9 @@ namespace PSP.Application.Projects.CommandHandlers {
                 _ctx.Projects.Remove(project);
                 await _ctx.SaveChangesAsync();
                 result.Payload = project;
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 result.AddUnknownError(e.Message);
 
             }

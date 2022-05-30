@@ -2075,11 +2075,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
+      "projectUniqueName": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
       "projectName": "PSP.Application",
-      "projectPath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
+      "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Application/PSP.Application.csproj",
       "packagesPath": "/home/rota/.nuget/packages/",
-      "outputPath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Application/obj/",
+      "outputPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/rota/.nuget/NuGet/NuGet.Config"
@@ -2094,8 +2094,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj": {
-              "projectPath": "/home/rota/Downloads/repos/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj"
+            "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj": {
+              "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj"
             }
           }
         }

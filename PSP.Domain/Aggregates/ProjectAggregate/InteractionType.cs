@@ -1,6 +1,8 @@
-﻿namespace PSP.Domain.Aggregates.ProjectAggregate {
+﻿namespace PSP.Domain.Aggregates.ProjectAggregate
+{
 
-    public enum InteractionType {
+    public enum InteractionType
+    {
         Like,
         Dislike,
         Haha,

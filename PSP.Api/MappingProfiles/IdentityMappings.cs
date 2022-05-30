@@ -1,10 +1,13 @@
 ﻿using PSP.Application.Identity.Dtos;
 
-namespace PSP.Api.MappingProfiles {
+namespace PSP.Api.MappingProfiles
+{
 
-    public class IdentityMappings : Profile {
+    public class IdentityMappings : Profile
+    {
 
-        public IdentityMappings() {
+        public IdentityMappings()
+        {
             CreateMap<UserRegistration, RegisterIdentity>();
             CreateMap<Login, LoginCommand>();
             CreateMap<IdentityUserProfileDto, IdentityUserProfile>();

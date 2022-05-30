@@ -1,27 +1,36 @@
 ﻿using PSP.Domain.Exceptions;
 using PSP.Domain.Validators.ProjectValidators;
 
-namespace PSP.Domain.Aggregates.ProjectAggregate {
+namespace PSP.Domain.Aggregates.ProjectAggregate
+{
 
-    public class ProjectComment {
+    public class ProjectComment
+    {
 
-        private ProjectComment() {
+        private ProjectComment()
+        {
         }
 
         public Guid CommentId { get; private set; }
         public Guid ProjectId { get; private set; }
         public string Text { get; private set; }
         public Guid UserProfileId { get; private set; }
+        public DateTime DateCreated { get; private set; }
+        public DateTime LastModified { get; private set; }
 
         // Factories
 
-        public static ProjectComment CreateProjectComment(Guid projectId, string text, Guid userId) {
+        public static ProjectComment CreateProjectComment(Guid projectId, string text, Guid userId)
+        {
             var validator = new ProjectCommentValidator();
 
-            var objectToValidate = new ProjectComment {
+            var objectToValidate = new ProjectComment
+            {
                 ProjectId = projectId,
                 Text = text,
-                UserProfileId = userId
+                UserProfileId = userId,
+                DateCreated = DateTime.UtcNow,
+                LastModified = DateTime.UtcNow
             };
 
             var validationResult = validator.Validate(objectToValidate);
@@ -35,8 +44,10 @@ namespace PSP.Domain.Aggregates.ProjectAggregate {
         }
 
         // public methods
-        public void UpdateCommentText(string newText) {
+        public void UpdateCommentText(string newText)
+        {
             Text = newText;
+            LastModified = DateTime.UtcNow;
         }
     }
 }

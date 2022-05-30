@@ -6,23 +6,28 @@ using PSP.Application.Models;
 using PSP.Application.Users;
 using PSP.Dal;
 
-namespace PSP.Application.Identity.Handlers; 
+namespace PSP.Application.Identity.Handlers;
 
-public class RemoveAccountHandler : IRequestHandler<RemoveAccount, OperationResult<bool>> {
+public class RemoveAccountHandler : IRequestHandler<RemoveAccount, OperationResult<bool>>
+{
     private readonly DataContext _ctx;
 
-    public RemoveAccountHandler(DataContext ctx) {
+    public RemoveAccountHandler(DataContext ctx)
+    {
         _ctx = ctx;
     }
 
-    public async Task<OperationResult<bool>> Handle(RemoveAccount request, CancellationToken cancellationToken) {
+    public async Task<OperationResult<bool>> Handle(RemoveAccount request, CancellationToken cancellationToken)
+    {
         var result = new OperationResult<bool>();
 
-        try {
+        try
+        {
             var identityUser = await _ctx.Users.FirstOrDefaultAsync
                 (iu => iu.Id == request.IdentityUserId.ToString(), cancellationToken);
 
-            if (identityUser == null) {
+            if (identityUser == null)
+            {
                 result.AddError(ErrorCode.IdentityUserDoesNotExist, IdentityErrorMessages.NonExistentIdentityUser);
                 return result;
             }
@@ -30,12 +35,14 @@ public class RemoveAccountHandler : IRequestHandler<RemoveAccount, OperationResu
             var userProfile = await _ctx.UserProfiles
                 .FirstOrDefaultAsync(up => up.IdentityId == request.IdentityUserId.ToString(), cancellationToken);
 
-            if (userProfile == null) {
+            if (userProfile == null)
+            {
                 result.AddError(ErrorCode.NotFound, UserProfileErrorMessages.UserProfileNotFound);
                 return result;
             }
 
-            if (identityUser.Id != request.RequestorGuid.ToString()) {
+            if (identityUser.Id != request.RequestorGuid.ToString())
+            {
                 result.AddError(ErrorCode.UnauthorizedAccountRemoval, IdentityErrorMessages.UnauthorizedAccountRemoval);
                 return result;
             }
@@ -45,7 +52,9 @@ public class RemoveAccountHandler : IRequestHandler<RemoveAccount, OperationResu
             await _ctx.SaveChangesAsync(cancellationToken);
 
             result.Payload = true;
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             result.AddUnknownError(e.Message);
         }
 

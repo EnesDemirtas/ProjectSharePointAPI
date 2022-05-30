@@ -1,6 +1,8 @@
-﻿namespace PSP.Api.Registrars {
+﻿namespace PSP.Api.Registrars
+{
 
-    public interface IWebApplicationBuilderRegistrar : IRegistrar {
+    public interface IWebApplicationBuilderRegistrar : IRegistrar
+    {
 
         void RegisterServices(WebApplicationBuilder builder);
     }

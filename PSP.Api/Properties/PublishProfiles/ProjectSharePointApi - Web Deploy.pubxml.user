@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Bu dosya, Web projenizin yayımlama/paket işlemi tarafından kullanılıyor. MSBuild dosyasını düzenleyerek
+bu işlemin davranışını düzenleyebilirsiniz. Bununla ilgili daha fazla bilgi edinmek için https://go.microsoft.com/fwlink/?LinkID=208121 adresini ziyaret edin. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPTky+QuqyUSzCXYgEvJCogAAAAACAAAAAAAQZgAAAAEAACAAAACQ4FDmhjO4nPgJEG9V+lMF9716klcHRMuI5WSG+L+zUQAAAAAOgAAAAAIAACAAAAAIxgu6de7Y/OvR8PTgI6icnPSC3IOHcCoOXQc2lQxYJoAAAAAicSFoXMEKSPn5Ei2UoBeQM47tfMG2ACq3jic286S/CyXmcCHLtXIxmlRwadiw6QB1AiLJCS4GColQkfGMnzch/tFwq8tDFnDrg6MQhv1JXTz2vivLDn5DyBZS2c9SgbvbFl9NkUPJ9Jxopvz0n/9BJSqNQTLJ1JI3nNMh2XTau0AAAABqcIj7O7UKWceUW2eV8PCCOvA+iIi7xRi1WCEDwew3AQ4bCILrYtIUUHX++W7KvgE0aKujKkIkcFPHk3JK6Oe8</EncryptedPassword>
+    <History>True|2022-05-25T08:21:57.3741237Z;True|2022-05-25T11:18:03.7796360+03:00;True|2022-05-25T00:51:22.6822613+03:00;True|2022-05-24T16:36:11.1027710+03:00;True|2022-05-24T16:17:14.8076271+03:00;True|2022-05-24T15:39:21.0770163+03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="PSP.Dal.DataContext">
+      <Value>Data Source=tcp:pspapidb.database.windows.net,1433%3bInitial Catalog=PSP.Api_db%3bUser Id=EnesDemirtas%40pspapidb%3bPassword=Enes1017509156</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

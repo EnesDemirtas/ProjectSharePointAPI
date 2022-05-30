@@ -1,13 +1,17 @@
-﻿namespace PSP.Api {
+﻿namespace PSP.Api
+{
 
-    public static class ApiRoutes {
+    public static class ApiRoutes
+    {
         public const string BaseRoute = "api/[controller]";
 
-        public static class UserProfiles {
+        public static class UserProfiles
+        {
             public const string IdRoute = "{id}";
         }
 
-        public static class Projects {
+        public static class Projects
+        {
             public const string IdRoute = "{id}";
             public const string ProjectComments = "{projectId}/comments";
             public const string CommentById = "{projectId}/comments/{commentId}";
@@ -16,10 +20,15 @@
             public const string ProjectInteractions = "{projectId}/interactions";
         }
 
-        public static class Identity {
+        public static class Identity
+        {
             public const string Login = "login";
             public const string Registration = "registration";
             public const string IdentityById = "{identityUserId}";
+        }
+
+        public static class Categories {
+            public const string IdRoute = "{id}";
         }
     }
 }

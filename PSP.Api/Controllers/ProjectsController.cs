@@ -1,21 +1,26 @@
-﻿using PSP.Api.Extensions;
+﻿using Microsoft.AspNetCore.Authorization;
+using PSP.Api.Extensions;
 using ProjectInteraction = PSP.Api.Contracts.Projects.Responses.ProjectInteraction;
 
-namespace PSP.Api.Controllers {
+namespace PSP.Api.Controllers
+{
 
     [Route(ApiRoutes.BaseRoute)]
     [ApiController]
-    public class ProjectsController : BaseController {
+    public class ProjectsController : BaseController
+    {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
-        public ProjectsController(IMediator mediator, IMapper mapper) {
+        public ProjectsController(IMediator mediator, IMapper mapper)
+        {
             _mediator = mediator;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllProjects() {
+        public async Task<IActionResult> GetAllProjects()
+        {
             var result = await _mediator.Send(new GetAllProjects());
             var mapped = _mapper.Map<List<ProjectResponse>>(result.Payload);
             return result.IsError ? HandleErrorResponse(result.Errors) : Ok(mapped);
@@ -24,7 +29,8 @@ namespace PSP.Api.Controllers {
         [HttpGet]
         [Route(ApiRoutes.Projects.IdRoute)]
         [ValidateGuid("id")]
-        public async Task<IActionResult> GetProjectById(string id) {
+        public async Task<IActionResult> GetProjectById(string id)
+        {
             var projectId = Guid.Parse(id);
             var query = new GetProjectById { ProjectId = projectId };
             var result = await _mediator.Send(query);
@@ -36,10 +42,15 @@ namespace PSP.Api.Controllers {
 
         [HttpPost]
         [ValidateModel]
-        public async Task<IActionResult> CreateProject([FromBody] ProjectCreate newPost) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> CreateProject([FromBody] ProjectCreate newPost)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
-            var command = new CreateProject() {
+            var command = new CreateProject()
+            {
                 UserProfileId = userProfileId,
+                ProjectName = newPost.ProjectName,
+                CategoryId = newPost.CategoryId,
                 TextContent = newPost.TextContent
             };
 
@@ -54,10 +65,14 @@ namespace PSP.Api.Controllers {
         [Route(ApiRoutes.Projects.IdRoute)]
         [ValidateGuid("id")]
         [ValidateModel]
-        public async Task<IActionResult> UpdateProjectText([FromBody] ProjectUpdate updatedPost, string id) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<IActionResult> UpdateProjectText([FromBody] ProjectUpdate updatedPost, string id)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
 
-            var command = new UpdateProjectContent() {
+            var command = new UpdateProjectContent()
+            {
                 NewText = updatedPost.Text,
                 ProjectId = Guid.Parse(id),
                 UserProfileId = userProfileId
@@ -71,9 +86,12 @@ namespace PSP.Api.Controllers {
         [HttpDelete]
         [Route(ApiRoutes.Projects.IdRoute)]
         [ValidateGuid("id")]
-        public async Task<IActionResult> DeleteProject(string id) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<IActionResult> DeleteProject(string id)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
-            var command = new DeleteProject() { ProjectId = Guid.Parse(id) , UserProfileId = userProfileId};
+            var command = new DeleteProject() { ProjectId = Guid.Parse(id), UserProfileId = userProfileId };
             var result = await _mediator.Send(command);
 
             return result.IsError ? HandleErrorResponse(result.Errors) : NoContent();
@@ -82,7 +100,8 @@ namespace PSP.Api.Controllers {
         [HttpGet]
         [Route(ApiRoutes.Projects.ProjectComments)]
         [ValidateGuid("projectId")]
-        public async Task<IActionResult> GetCommentsByProjectId(string projectId) {
+        public async Task<IActionResult> GetCommentsByProjectId(string projectId)
+        {
             var query = new GetProjectComments() { ProjectId = Guid.Parse(projectId) };
             var result = await _mediator.Send(query);
 
@@ -96,10 +115,14 @@ namespace PSP.Api.Controllers {
         [Route(ApiRoutes.Projects.ProjectComments)]
         [ValidateGuid("projectId")]
         [ValidateModel]
-        public async Task<IActionResult> AddCommentToProject(string projectId, [FromBody] ProjectCommentCreate comment) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<IActionResult> AddCommentToProject(string projectId, [FromBody] ProjectCommentCreate comment)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
-            
-            var command = new AddProjectComment() {
+
+            var command = new AddProjectComment()
+            {
                 ProjectId = Guid.Parse(projectId),
                 UserProfileId = userProfileId,
                 CommentText = comment.Text
@@ -112,15 +135,19 @@ namespace PSP.Api.Controllers {
             var newComment = _mapper.Map<ProjectCommentResponse>(result.Payload);
             return Ok(newComment);
         }
-        
+
         [HttpDelete]
         [Route(ApiRoutes.Projects.CommentById)]
         [ValidateGuid("postId", "commentId")]
-        public async Task<IActionResult> RemoveCommentFromPost(string postId, string commentId, CancellationToken token) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<IActionResult> RemoveCommentFromPost(string postId, string commentId, CancellationToken token)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
             var postGuid = Guid.Parse(postId);
             var commentGuid = Guid.Parse(commentId);
-            var command = new RemoveCommentFromProject {
+            var command = new RemoveCommentFromProject
+            {
                 UserProfileId = userProfileId,
                 CommentId = commentGuid,
                 ProjectId = postGuid
@@ -131,17 +158,21 @@ namespace PSP.Api.Controllers {
 
             return NoContent();
         }
-        
+
         [HttpPut]
         [Route(ApiRoutes.Projects.CommentById)]
         [ValidateGuid("postId", "commentId")]
         [ValidateModel]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
         public async Task<IActionResult> UpdateCommentText(string postId, string commentId, ProjectCommentUpdate updatedComment
-            , CancellationToken token) {
+            , CancellationToken token)
+        {
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
             var postGuid = Guid.Parse(postId);
             var commentGuid = Guid.Parse(commentId);
-            var command = new UpdateProjectComment {
+            var command = new UpdateProjectComment
+            {
                 UserProfileId = userProfileId,
                 ProjectId = postGuid,
                 CommentId = commentGuid,
@@ -153,11 +184,12 @@ namespace PSP.Api.Controllers {
 
             return NoContent();
         }
-        
+
         [HttpGet]
         [Route(ApiRoutes.Projects.ProjectInteractions)]
         [ValidateGuid("postId")]
-        public async Task<IActionResult> GetPostInteractions(string postId, CancellationToken token) {
+        public async Task<IActionResult> GetPostInteractions(string postId, CancellationToken token)
+        {
             var postGuid = Guid.Parse(postId);
             var query = new GetProjectInteractions { ProjectId = postGuid };
             var result = await _mediator.Send(query, token);
@@ -165,17 +197,21 @@ namespace PSP.Api.Controllers {
             var mapped = _mapper.Map<List<ProjectInteraction>>(result.Payload);
             return Ok(mapped);
         }
-        
+
         [HttpPost]
         [Route(ApiRoutes.Projects.ProjectInteractions)]
         [ValidateGuid("postId")]
         [ValidateModel]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
         public async Task<IActionResult> AddPostInteraction(string postId, ProjectInteractionCreate interaction,
-            CancellationToken token) {
+            CancellationToken token)
+        {
             var postGuid = Guid.Parse(postId);
             var userProfileId = HttpContext.GetUserProfileIdClaimValue();
-            var command = new AddInteraction {
-                ProjectId= postGuid,
+            var command = new AddInteraction
+            {
+                ProjectId = postGuid,
                 UserProfileId = userProfileId,
                 Type = interaction.Type
             };
@@ -187,16 +223,20 @@ namespace PSP.Api.Controllers {
             var mapped = _mapper.Map<ProjectInteraction>(result.Payload);
             return Ok(mapped);
         }
-        
+
         [HttpDelete]
         [Route(ApiRoutes.Projects.InteractionById)]
         [ValidateGuid("postId", "interactionId")]
-        public async Task<IActionResult> RemovePostInteraction(string postId, string interactionId, CancellationToken token) {
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
+        public async Task<IActionResult> RemovePostInteraction(string postId, string interactionId, CancellationToken token)
+        {
             var postGuid = Guid.Parse(postId);
             var interactionGuid = Guid.Parse(interactionId);
             var userProfileGuid = HttpContext.GetUserProfileIdClaimValue();
 
-            var command = new RemoveProjectInteraction {
+            var command = new RemoveProjectInteraction
+            {
                 ProjectId = postGuid,
                 InteractionId = interactionGuid,
                 UserProfileId = userProfileGuid
