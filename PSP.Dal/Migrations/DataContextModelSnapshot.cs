@@ -206,12 +206,7 @@ namespace PSP.Dal.Migrations
                     b.Property<DateTime>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("CategoryId");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Categories");
                 });
@@ -222,7 +217,10 @@ namespace PSP.Dal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LastModified")
@@ -240,6 +238,8 @@ namespace PSP.Dal.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProjectId");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserProfileId");
 
@@ -320,20 +320,21 @@ namespace PSP.Dal.Migrations
                     b.ToTable("UserProfiles");
                 });
 
-            modelBuilder.Entity("PSP.Domain.Aggregates.CategoryAggregate.Category", b =>
-                {
-                    b.HasOne("PSP.Domain.Aggregates.ProjectAggregate.Project", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("ProjectId");
-                });
-
             modelBuilder.Entity("PSP.Domain.Aggregates.ProjectAggregate.Project", b =>
                 {
+                    b.HasOne("PSP.Domain.Aggregates.CategoryAggregate.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("PSP.Domain.Aggregates.UserAggregate.UserProfile", "UserProfile")
                         .WithMany()
                         .HasForeignKey("UserProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Category");
 
                     b.Navigation("UserProfile");
                 });
@@ -399,8 +400,6 @@ namespace PSP.Dal.Migrations
 
             modelBuilder.Entity("PSP.Domain.Aggregates.ProjectAggregate.Project", b =>
                 {
-                    b.Navigation("Categories");
-
                     b.Navigation("Comments");
 
                     b.Navigation("Interactions");

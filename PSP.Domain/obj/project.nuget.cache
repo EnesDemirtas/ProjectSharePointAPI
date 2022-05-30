@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "51fO0m4MdMabSiqV6+SM3rOk++jTnvEfFCt0liLa+SMlZQo9Yow1a74BRgCPJjfpBy3I2Dmow3wjjXult/W+Pw==",
+  "dgSpecHash": "e9133Y2PycxYd6S+rzdovoUL7FyoMYtYa8yw3gqOpoNqD5hH9bofwMwLxaqdwmsN0Nqe0XBrAR63G0nj3tzSRQ==",
   "success": true,
-  "projectFilePath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
+  "projectFilePath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj",
   "expectedPackageFiles": [
-    "/home/rota/.nuget/packages/fluentvalidation/11.0.1/fluentvalidation.11.0.1.nupkg.sha512"
+    "C:\\Users\\90541\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512"
   ],
   "logs": []
 }

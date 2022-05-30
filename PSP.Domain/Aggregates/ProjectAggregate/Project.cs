@@ -10,7 +10,6 @@ namespace PSP.Domain.Aggregates.ProjectAggregate
     {
         private readonly List<ProjectComment> _comments = new List<ProjectComment>();
         private readonly List<ProjectInteraction> _interactions = new List<ProjectInteraction>();
-        private readonly List<Category> _categories = new List<Category>();
 
         private Project()
         {
@@ -18,33 +17,35 @@ namespace PSP.Domain.Aggregates.ProjectAggregate
 
         public Guid ProjectId { get; private set; }
         public Guid UserProfileId { get; private set; }
+
+        public Category Category { get; private set; }
+
         public UserProfile UserProfile { get; private set; }
 
         public string ProjectContent { get; private set; }
         public string ProjectName { get; private set; }
-        public DateTime CreatedDate { get; private set; }
+        public DateTime DateCreated { get; private set; }
         public DateTime LastModified { get; private set; }
 
         public IEnumerable<ProjectComment> Comments { get { return _comments; } }
         public IEnumerable<ProjectInteraction> Interactions { get { return _interactions; } }
         
-        public IEnumerable<Category> Categories {
-            get { return _categories; }
-        }
+        
         
 
         // Factories
 
-        public static Project CreateProject(Guid userId, string projectName, string projectContent)
+        public static Project CreateProject(Guid userId, Category category, string projectName, string projectContent)
         {
             var validator = new ProjectValidator();
 
             var objectToValidate = new Project
             {
                 UserProfileId = userId,
+                Category = category,
                 ProjectName = projectName,
                 ProjectContent = projectContent,
-                CreatedDate = DateTime.UtcNow,
+                DateCreated = DateTime.UtcNow,
                 LastModified = DateTime.UtcNow
             };
 
@@ -92,14 +93,6 @@ namespace PSP.Domain.Aggregates.ProjectAggregate
         public void RemoveInteraction(ProjectInteraction toRemove)
         {
             _interactions.Remove(toRemove);
-        }
-
-        public void AddCategory(Category category) {
-            _categories.Add(category);
-        }
-
-        public void RemoveCategory(Category toRemove) {
-            _categories.Remove(toRemove);
         }
     }
 }

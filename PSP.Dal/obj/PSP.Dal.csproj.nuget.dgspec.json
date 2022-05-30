@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj": {}
+    "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Dal\\PSP.Dal.csproj": {}
   },
   "projects": {
-    "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj": {
+    "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Dal\\PSP.Dal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj",
+        "projectUniqueName": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Dal\\PSP.Dal.csproj",
         "projectName": "PSP.Dal",
-        "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/PSP.Dal.csproj",
-        "packagesPath": "/home/rota/.nuget/packages/",
-        "outputPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Dal/obj/",
+        "projectPath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Dal\\PSP.Dal.csproj",
+        "packagesPath": "C:\\Users\\90541\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Dal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/rota/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\90541\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {
-                "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj"
+              "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj": {
+                "projectPath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj"
               }
             }
           }
@@ -76,26 +82,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj": {
+    "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj",
         "projectName": "PSP.Domain",
-        "projectPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/PSP.Domain.csproj",
-        "packagesPath": "/home/rota/.nuget/packages/",
-        "outputPath": "/home/rota/Downloads/ProjectSharePointAPI/PSP.Domain/obj/",
+        "projectPath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\PSP.Domain.csproj",
+        "packagesPath": "C:\\Users\\90541\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/rota/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\90541\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -134,7 +146,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

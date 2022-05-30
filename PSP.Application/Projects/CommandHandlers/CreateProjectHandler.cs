@@ -26,9 +26,9 @@ namespace PSP.Application.Projects.CommandHandlers
 
             try
             {
-                var post = Project.CreateProject(request.UserProfileId, request.ProjectName, request.TextContent);
                 var category = await _ctx.Categories.FirstOrDefaultAsync(c => c.CategoryId == request.CategoryId);
-                post.AddCategory(category);
+                var post = Project.CreateProject(request.UserProfileId, 
+                    category, request.ProjectName, request.TextContent);
                 _ctx.Projects.Add(post);
                 await _ctx.SaveChangesAsync();
                 result.Payload = post;
