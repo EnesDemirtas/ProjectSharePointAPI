@@ -22,6 +22,7 @@ namespace PSP.Dal
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ProjectConfig());
             modelBuilder.ApplyConfiguration(new ProjectCommentConfig());
             modelBuilder.ApplyConfiguration(new ProjectInteractionConfig());
             modelBuilder.ApplyConfiguration(new UserProfileConfig());

@@ -21,7 +21,10 @@ namespace PSP.Application.Projects.QueryHandlers
         public async Task<OperationResult<Project>> Handle(GetProjectById request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<Project>();
-            var post = await _ctx.Projects.FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
+            var post = await _ctx.Projects
+                .Include(c => c.Category).Include(pc => pc.Comments)
+                .Include(pi => pi.Interactions)
+                .FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId);
 
             if (post is null)
             {

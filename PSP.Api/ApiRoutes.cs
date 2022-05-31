@@ -18,6 +18,7 @@
             public const string AddInteraction = "{projectId}/interactions";
             public const string InteractionById = "{projectId}/interactions/{interactionId}";
             public const string ProjectInteractions = "{projectId}/interactions";
+            public const string ProjectsByCategoryId = "byCategory/{categoryId}";
         }
 
         public static class Identity

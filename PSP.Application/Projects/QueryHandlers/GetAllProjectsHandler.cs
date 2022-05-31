@@ -23,7 +23,8 @@ namespace PSP.Application.Projects.QueryHandlers
 
             try
             {
-                var posts = await _ctx.Projects.Include(c => c.Category).ToListAsync();
+                var posts = await _ctx.Projects.Include(c => c.Category).
+                    Include(pc => pc.Comments).Include(pi => pi.Interactions).ToListAsync();
                 result.Payload = posts;
             }
             catch (Exception e)

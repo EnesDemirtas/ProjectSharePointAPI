@@ -40,6 +40,19 @@ namespace PSP.Api.Controllers
             return result.IsError ? HandleErrorResponse(result.Errors) : Ok(mapped);
         }
 
+        [HttpGet]
+        [Route(ApiRoutes.Projects.ProjectsByCategoryId)]
+        [ValidateGuid("categoryId")]
+        public async Task<IActionResult> GetProjectsByCategoryId(string categoryId)
+        {
+            var categoryGuid = Guid.Parse(categoryId);
+
+            var query = new GetProjectsByCategoryId { CategoryId = categoryGuid };
+            var result = await _mediator.Send(query);
+            var mapped = _mapper.Map<List<ProjectResponse>>(result.Payload);
+            return result.IsError? HandleErrorResponse(result.Errors) : Ok(mapped);
+        }
+
         [HttpPost]
         [ValidateModel]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

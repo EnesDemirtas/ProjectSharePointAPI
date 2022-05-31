@@ -446,3 +446,16 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20220530232904_add_key_project_config')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20220530232904_add_key_project_config', N'6.0.5');
+END;
+GO
+
+COMMIT;
+GO
+

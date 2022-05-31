@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V047NF4dopbPRagudIYgDaz6CIMrpk7h5SgLN0Ivz3PBMn1q87TpPadqyODsaB/b8j+uNuVkEeZLhLMiRiQJ9w==",
+  "dgSpecHash": "ORARNWwecZGyqnuNtfPXmtEwb5PLLR3sHevny4M5xeIioCuwpCEmfsb+f59kqiQC3VTE/b6ErCWHwfMBfbJJug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\90541\\Source\\Repos\\ProjectSharePointAPI\\PSP.Api\\PSP.Api.csproj",
+  "projectFilePath": "C:\\Users\\90541\\source\\repos\\ProjectSharePointAPI\\PSP.Api\\PSP.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\90541\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\90541\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
