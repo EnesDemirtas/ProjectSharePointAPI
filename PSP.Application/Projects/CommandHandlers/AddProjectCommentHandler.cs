@@ -30,7 +30,7 @@ namespace PSP.Application.Projects.CommandHandlers
 
                 if (post is null)
                 {
-                    result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
+                    result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.ProjectNotFound, request.ProjectId));
                     return result;
                 }
 

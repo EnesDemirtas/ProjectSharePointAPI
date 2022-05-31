@@ -25,7 +25,8 @@ public class GetCategoryByIdHandler : IRequestHandler<GetCategoryById, Operation
 
         if (post is null)
         {
-            result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.CategoryId));
+            result.AddError(ErrorCode.NotFound, 
+                string.Format(CategoryErrorMessages.CategoryNotFound, request.CategoryId));
             return result;
         }
 

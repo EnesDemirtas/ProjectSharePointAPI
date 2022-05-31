@@ -28,13 +28,13 @@ namespace PSP.Application.Projects.CommandHandlers
 
                 if (project is null)
                 {
-                    result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
+                    result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.ProjectNotFound, request.ProjectId));
                     return result;
                 }
 
                 if (project.UserProfileId != request.UserProfileId)
                 {
-                    result.AddError(ErrorCode.PostDeleteNotPossible, ProjectErrorMessages.PostDeleteNotPossible);
+                    result.AddError(ErrorCode.ProjectDeleteNotPossible, ProjectErrorMessages.ProjectDeleteNotPossible);
                     return result;
                 }
 

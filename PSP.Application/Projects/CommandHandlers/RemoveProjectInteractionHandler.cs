@@ -27,14 +27,14 @@ public class RemoveProjectInteractionHandler : IRequestHandler<RemoveProjectInte
 
             if (post is null)
             {
-                result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.PostNotFound, request.ProjectId));
+                result.AddError(ErrorCode.NotFound, string.Format(ProjectErrorMessages.ProjectNotFound, request.ProjectId));
                 return result;
             }
 
             var interaction = post.Interactions.FirstOrDefault(i => i.InteractionId == request.InteractionId);
             if (interaction is null)
             {
-                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostInteractionNotFound);
+                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.ProjectInteractionNotFound);
                 return result;
             }
 

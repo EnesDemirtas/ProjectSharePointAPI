@@ -32,7 +32,7 @@ namespace PSP.Application.Projects.QueryHandlers
             if (post is null)
             {
                 result.AddError(ErrorCode.NotFound, 
-                    string.Format(ProjectErrorMessages.PostNotFound, request.CategoryId));
+                    string.Format(ProjectErrorMessages.ProjectNotFound, request.CategoryId));
                 return result;
             }
 

@@ -14,9 +14,9 @@
         IdentityCreationFailed = 202,
 
         // Application Error 300-399
-        PostUpdateNotPossible = 300,
+        ProjectUpdateNotPossible = 300,
 
-        PostDeleteNotPossible = 301,
+        ProjectDeleteNotPossible = 301,
         InteractionRemovalNotAuthorized = 302,
         IdentityUserAlreadyExists = 303,
         IdentityUserDoesNotExist = 304,

@@ -26,7 +26,7 @@ public class AddInteractionHandler : IRequestHandler<AddInteraction, OperationRe
                 .FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId, cancellationToken);
             if (post == null)
             {
-                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostNotFound);
+                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.ProjectNotFound);
                 return result;
             }
             var interaction = ProjectInteraction.CreateProjectInteraction(request.ProjectId, request.UserProfileId, request.Type);

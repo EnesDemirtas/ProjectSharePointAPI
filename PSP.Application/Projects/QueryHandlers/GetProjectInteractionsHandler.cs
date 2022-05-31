@@ -28,7 +28,7 @@ public class GetPostInteractionsHandler : IRequestHandler<GetProjectInteractions
                 .FirstOrDefaultAsync(p => p.ProjectId == request.ProjectId, cancellationToken);
             if (post == null)
             {
-                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostNotFound);
+                result.AddError(ErrorCode.NotFound, ProjectErrorMessages.ProjectNotFound);
                 return result;
             }
 

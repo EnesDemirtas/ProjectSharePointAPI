@@ -26,14 +26,14 @@ public class RemoveCommentFromProjectHandler : IRequestHandler<RemoveCommentFrom
 
         if (post == null)
         {
-            _result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostNotFound);
+            _result.AddError(ErrorCode.NotFound, ProjectErrorMessages.ProjectNotFound);
             return _result;
         }
 
         var comment = post.Comments.FirstOrDefault(c => c.CommentId == request.CommentId);
         if (comment == null)
         {
-            _result.AddError(ErrorCode.NotFound, ProjectErrorMessages.PostCommentNotFound);
+            _result.AddError(ErrorCode.NotFound, ProjectErrorMessages.ProjectCommentNotFound);
             return _result;
         }
 
